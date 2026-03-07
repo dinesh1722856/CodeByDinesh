@@ -47,3 +47,41 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
 
   alert("Message sent!");
 });
+
+<script>
+            $(document).ready(function () {
+                // Handle form submission
+                $('#contact_form').submit(function (e) {
+                    e.preventDefault(); // Prevent default form submission
+                    $('#loader').show(); // Show loader
+                    // Collect form data
+                    var formData = $(this).serialize();
+                    // AJAX request
+                    $.ajax({
+                        type: "POST",
+                        url: "/contact_from",
+                        data: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF Token
+                        },
+                        success: function (response) {
+                            $('#loader').hide(); // Hide loader
+                            // Dynamically show custom alert with message
+                            $('#successMessage').text(response.message || "Your message has been sent successfully");
+                            $('#customAlert').fadeIn(); // Show custom alert with fade-in effect
+                            // Reset the form
+                            $('#contact_form')[0].reset();
+                        },
+                        error: function (xhr, status, error) {
+                            $('#loader').hide(); // Hide loader
+                            alert('Error occurred while sending message'); // Simple error handling
+                        }
+                    });
+                });
+                // Close custom alert on button click
+                $('#closeAlert').click(function (e) {
+                    e.preventDefault(); // Prevent default action of button
+                    $('#customAlert').fadeOut(); // Hide custom alert
+                });
+            });
+        </script>
