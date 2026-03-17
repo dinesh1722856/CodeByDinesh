@@ -77,11 +77,11 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
                             alert('Error occurred while sending message'); // Simple error handling
                         }
                     });
-                });
+                })
                 // Close custom alert on button click
-                $('#closeAlert').click(function (e) {
+                ('#closeAlert').click(function (e) {
                     e.preventDefault(); // Prevent default action of button
                     $('#customAlert').fadeOut(); // Hide custom alert
-                });
+                })
             });
         </script>

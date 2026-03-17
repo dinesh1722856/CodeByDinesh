@@ -1420,13 +1420,13 @@ textarea:focus-visible {
 
 /* common css */
 :root {
-  --main-color: #3d32cf;
-  --primary-color: #25262fb1;
-  --secondary-color: #bfe0de;
-  --text-color: #a76464;
-  --meta-text-color: #9b9db1;
-  --section-bg: #e2ecf6;
-  --main-border: #bcc7d3;
+  --main-color: #0d6efd;
+  --primary-color: #0b1a2f;
+  --secondary-color: #1e293b;
+  --text-color: #64748b;
+  --meta-text-color: #94a3b8;
+  --section-bg: #f1f5f9;
+  --main-border: #cbd5e1;
 }
 body {
   font-family: "jost-medium-font";
@@ -1953,32 +1953,71 @@ a:hover,
 span#main {
   color: var(--main-color) !important;
 }
+/* ===== SOCIAL ICON FIX ===== */
+
 .slider-social-link {
-  top: 50%;
-  transform: translateY(-50%) !important;
-  -webkit-transform: translateY(-50%) !important;
-  -moz-transform: translateY(-50%) !important;
-  -ms-transform: translateY(-50%) !important;
-  -o-transform: translateY(-50%) !important;
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 999;
 }
-.slider-social-link .social li a {
-  font-size: 18px;
-  width: 55px;
-  margin: 2px 0;
-  height: 50px;
-  line-height: 52px;
+
+.slider-social-link ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.slider-social-link .social li {
-  border: 1px solid rgb(204, 211, 217, 0.2);
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+
+.slider-social-link ul li {
+    margin: 12px 0;
 }
-.slider-social-link .social li:hover {
-  background: var(--main-color);
-  border: 1px solid var(--main-color);
+
+/* ICON STYLE */
+.slider-social-link a {
+    width: 45px;
+    height: 45px;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+    font-size: 18px;
+}
+
+.slider-social-link a {
+    text-decoration: none;
+    border: none;
+}
+
+.slider-social-link a:hover {
+    text-decoration: none;
+}
+
+/* HOVER EFFECT 🔥 */
+.slider-social-link a:hover {
+    transform: translateX(-8px) scale(1.1);
+    background: #0d6efd; /* Bootstrap primary */
+}
+
+/* INDIVIDUAL COLORS */
+.slider-social-link a:hover .fa-whatsapp {
+    color: #25D366;
+}
+.slider-social-link a:hover .fa-twitter {
+    color: #1DA1F2;
+}
+.slider-social-link a:hover .fa-linkedin-in {
+    color: #0077B5;
+}
+
+/* MOBILE HIDE */
+@media (max-width: 768px) {
+    .slider-social-link {
+        display: none;
+    }
 }
 .slider-img {
   margin-right: -50px;
@@ -5159,4 +5198,114 @@ a.meanmenu-reveal {
 .mean-container a.meanmenu-reveal {
 	margin-top: -250px;
 
+}
+
+
+
+/* ===== GAP FIX ALL DEVICES ===== */
+
+/* Default clean spacing */
+.slider-content {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove extra top gap */
+.slider-height {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+    .slider-height {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-content {
+        margin-top: 0 !important;
+        padding: 0 15px;
+    }
+
+    h1 {
+        margin: 10px 0;
+    }
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .slider-height {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-content {
+        margin-top: 0 !important;
+        padding: 0 25px;
+    }
+}
+
+
+/* ===== FINAL MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+    body, html {
+        overflow-x: hidden;
+    }
+
+    /* Full section center */
+    .slider-height {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 15px;
+    }
+
+    /* Content center */
+    .slider-content {
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    /* HELLO I'M */
+    .slider-content .sub-heading {
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+    }
+
+    /* NAME FIX */
+    .slider-content h1 {
+        font-size: 38px !important;
+        line-height: 1.2;
+        margin: 10px 0;
+        word-break: break-word;
+    }
+
+    /* Subtitle */
+    .slider-content h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* Button */
+    .slider-content .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    /* Logo fix (top spacing remove) */
+    .logo {
+        margin: 10px 0;
+        text-align: center;
+    }
 }
